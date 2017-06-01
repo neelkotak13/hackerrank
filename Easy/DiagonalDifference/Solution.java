@@ -51,28 +51,27 @@ import java.util.regex.*;
 
 public class Solution
 {
-
+    // calculates diagonal differnce
     public static int diagdiff(int[] arr,int n)
     {
         int diff;
         int p = 0;
         int s = 0;
         int counter = n-1;
+        // calculates primary diagonal sum
         for(int i=0;i<=Math.pow(n,2);i+=n+1)
         {
             p += arr[i];
         }
+        // calculates secondary diagonal sum
         while(counter != n*n-1)
         {
             s += arr[counter];
             counter += n-1;
         }
-        // for(int j =n-1;j<=Math.pow(n,2);j+=n-1)
-        // {
-        //     s += arr[j];
-        // }
-        // s -= arr[n*n-1];
+        // difference of diagonals
         diff = p-s;
+        // makes sure value is abslute value (always positive/distance from 0)
         if(diff < 0)
         {
             diff = -diff;
@@ -83,11 +82,14 @@ public class Solution
     {
         Scanner s = new Scanner(System.in);
         int n = s.nextInt();
+        // create array, could do a 2-D array, but easier this way imo
         int[] arr = new int[n*n];
+        // adds inputs to array
         for(int i=0;i<n*n;i++)
         {
             arr[i] = s.nextInt();
         }
+        // prints results
         System.out.printf("%d",diagdiff(arr,n));
     }
 }
